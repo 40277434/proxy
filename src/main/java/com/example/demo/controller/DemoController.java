@@ -13,85 +13,82 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 @RestController
-@CrossOrigin(origins = "*",maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class DemoController {
 
-
 	@GetMapping(value = "/")
-	public String aip(@RequestParam String x, @RequestParam String y, @RequestParam String method){
+	public String aip(@RequestParam String x, @RequestParam String y, @RequestParam String method) {
 		JSONObject jsonObject = new JSONObject();
-		if (null == method || "".equals(method)){
+		if (null == method || "".equals(method)) {
 			jsonObject.put("error", true);
 			jsonObject.put("reason", "method is null");
 			return jsonObject.toJSONString();
 		}
-		if ("add".equals(method)){
-			return add(x,y);
-		}else if ("minus".equals(method)){
-			return minus(x,y);
-		}else if ("multiply".equals(method)){
-			return multiply(x,y);
-		}else if ("divi".equals(method)){
+		if ("add".equals(method)) {
+			return add(x, y);
+		} else if ("minus".equals(method)) {
+			return minus(x, y);
+		} else if ("multiply".equals(method)) {
+			return multiply(x, y);
+		} else if ("divi".equals(method)) {
 			return divi(x, y);
-		}else if ("power".equals(method)){
-			return power(x,y);
-		}else if ("modulo".equals(method)){
-			return modulo(x,y);
-		}else {
+		} else if ("power".equals(method)) {
+			return power(x, y);
+		} else if ("modulo".equals(method)) {
+			return modulo(x, y);
+		} else {
 			jsonObject.put("error", true);
 			jsonObject.put("reason", "method[add,minus,product,divi,power,modulo]");
 			return jsonObject.toJSONString();
 		}
 	}
-	
 
 	@GetMapping(value = "/add")
 	public String add(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        String url="http://add1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url+"/?x="+x+"&y="+y);
+		String url = "http://add1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
-	
-	
+
 	@GetMapping(value = "/minus")
 	public String minus(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        String url="http://minus1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url+"/?x="+x+"&y="+y);
+		String url = "http://minus1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
-	
+
 	@GetMapping(value = "/multiply")
 	public String multiply(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-        String url="http://multiply1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url+"/?x="+x+"&y="+y);
+		String url = "http://multiply1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
 
 	@GetMapping(value = "/divi")
 	public String divi(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-        String url="http://division1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url+"/?x="+x+"&y="+y);	
-	
+		String url = "http://division1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url + "/?x=" + x + "&y=" + y);
+
 	}
 
 	@GetMapping(value = "/power")
 	public String power(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-        String url="http://power1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url+"/?x="+x+"&y="+y);	
+		String url = "http://power1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
 
 	@GetMapping(value = "/modulo")
 	public String modulo(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
- 
-        String url="http://modulo.40277434.qpc.hal.davecutting.uk";
-		return doGet(url+"/?x="+x+"&y="+y);	
+
+		String url = "http://modulo.40277434.qpc.hal.davecutting.uk";
+		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
-	
+
 	@GetMapping(value = "/list")
 	public JSONObject list() {
-		String url="";
-		JSONObject jsonObject = JSON.parseObject(getList(url+"/list"));
-        return jsonObject;
+		String url = "";
+		JSONObject jsonObject = JSON.parseObject(getList(url + "/list"));
+		return jsonObject;
 
 	}
 
