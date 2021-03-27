@@ -80,7 +80,7 @@ public class DemoController {
 	@GetMapping(value = "/modulo")
 	public String modulo(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-		String url = "http://modulo.40277434.qpc.hal.davecutting.uk";
+		String url = "http://modulo1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
 
