@@ -26,19 +26,19 @@ public class DemoController {
 		}
 		if ("add".equals(method)) {
 			return add(x, y);
-		} else if ("minus".equals(method)) {
-			return minus(x, y);
+		} else if ("subtract".equals(method)) {
+			return subtract(x, y);
 		} else if ("multiply".equals(method)) {
 			return multiply(x, y);
-		} else if ("divi".equals(method)) {
-			return divi(x, y);
+		} else if ("division".equals(method)) {
+			return division(x, y);
 		} else if ("power".equals(method)) {
 			return power(x, y);
 		} else if ("modulo".equals(method)) {
 			return modulo(x, y);
 		} else {
 			jsonObject.put("error", true);
-			jsonObject.put("reason", "method[add,minus,product,divi,power,modulo]");
+			jsonObject.put("reason", "method[add,subtract,product,division,power,modulo]");
 			return jsonObject.toJSONString();
 		}
 	}
@@ -49,9 +49,9 @@ public class DemoController {
 		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
 
-	@GetMapping(value = "/minus")
-	public String minus(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-		String url = "http://minus1.40277434.qpc.hal.davecutting.uk";
+	@GetMapping(value = "/subtract")
+	public String subtract(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
+		String url = "http://subtract1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
 
@@ -62,8 +62,8 @@ public class DemoController {
 		return doGet(url + "/?x=" + x + "&y=" + y);
 	}
 
-	@GetMapping(value = "/divi")
-	public String divi(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
+	@GetMapping(value = "/division")
+	public String division(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
 		String url = "http://division1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url + "/?x=" + x + "&y=" + y);
