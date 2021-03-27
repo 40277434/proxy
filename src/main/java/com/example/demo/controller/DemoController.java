@@ -16,7 +16,6 @@ import java.net.URL;
 @CrossOrigin(origins = "*",maxAge = 3600)
 public class DemoController {
 
-	private String url = "http://vip.adac.vip";
 
 	@GetMapping(value = "/api")
 	public String aip(@RequestParam String x, @RequestParam String y, @RequestParam String method){
@@ -30,17 +29,17 @@ public class DemoController {
 			return add(x,y);
 		}else if ("minus".equals(method)){
 			return minus(x,y);
-		}else if ("product".equals(method)){
-			return product(x,y);
+		}else if ("multiply".equals(method)){
+			return multiply(x,y);
 		}else if ("divi".equals(method)){
 			return divi(x, y);
 		}else if ("power".equals(method)){
 			return power(x,y);
-		}else if ("modulu".equals(method)){
-			return modulu(x,y);
+		}else if ("modulo".equals(method)){
+			return modulo(x,y);
 		}else {
 			jsonObject.put("error", true);
-			jsonObject.put("reason", "method[add,minus,product,divi,power,modulu]");
+			jsonObject.put("reason", "method[add,minus,product,divi,power,modulo]");
 			return jsonObject.toJSONString();
 		}
 	}
@@ -48,33 +47,44 @@ public class DemoController {
 
 	@GetMapping(value = "/add")
 	public String add(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        return doGet(url+"/add?x="+x+"&y="+y);
+        String url="add1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url+"/?x="+x+"&y="+y);
 	}
 	
 	
 	@GetMapping(value = "/minus")
 	public String minus(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        return doGet(url+"/minus?x="+x+"&y="+y);
+        String url="minus1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url+"/?x="+x+"&y="+y);
 	}
 	
-	@GetMapping(value = "/product")
-	public String product(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        return doGet(url+"/product?x="+x+"&y="+y);
+	@GetMapping(value = "/multiply")
+	public String multiply(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
+
+        String url="multiply1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url+"/?x="+x+"&y="+y);
 	}
 
 	@GetMapping(value = "/divi")
 	public String divi(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        return doGet(url+"/divi?x="+x+"&y="+y);
+
+        String url="division1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url+"/?x="+x+"&y="+y);	
+	
 	}
 
 	@GetMapping(value = "/power")
 	public String power(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        return doGet(url+"/power?x="+x+"&y="+y);
+
+        String url="power1.40277434.qpc.hal.davecutting.uk";
+		return doGet(url+"/?x="+x+"&y="+y);	
 	}
 
-	@GetMapping(value = "/modulu")
-	public String modulu(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        return doGet(url+"/modulu?x="+x+"&y="+y);
+	@GetMapping(value = "/modulo")
+	public String modulo(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
+ 
+        String url="modulo.40277434.qpc.hal.davecutting.uk";
+		return doGet(url+"/?x="+x+"&y="+y);	
 	}
 	
 	@GetMapping(value = "/list")
