@@ -17,7 +17,7 @@ import java.net.URL;
 public class DemoController {
 
 
-	@GetMapping(value = "/api")
+	@GetMapping(value = "/")
 	public String aip(@RequestParam String x, @RequestParam String y, @RequestParam String method){
 		JSONObject jsonObject = new JSONObject();
 		if (null == method || "".equals(method)){
