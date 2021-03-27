@@ -47,28 +47,28 @@ public class DemoController {
 
 	@GetMapping(value = "/add")
 	public String add(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        String url="add1.40277434.qpc.hal.davecutting.uk";
+        String url="http://add1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url+"/?x="+x+"&y="+y);
 	}
 	
 	
 	@GetMapping(value = "/minus")
 	public String minus(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-        String url="minus1.40277434.qpc.hal.davecutting.uk";
+        String url="http://minus1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url+"/?x="+x+"&y="+y);
 	}
 	
 	@GetMapping(value = "/multiply")
 	public String multiply(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-        String url="multiply1.40277434.qpc.hal.davecutting.uk";
+        String url="http://multiply1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url+"/?x="+x+"&y="+y);
 	}
 
 	@GetMapping(value = "/divi")
 	public String divi(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-        String url="division1.40277434.qpc.hal.davecutting.uk";
+        String url="http://division1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url+"/?x="+x+"&y="+y);	
 	
 	}
@@ -76,14 +76,14 @@ public class DemoController {
 	@GetMapping(value = "/power")
 	public String power(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 
-        String url="power1.40277434.qpc.hal.davecutting.uk";
+        String url="http://power1.40277434.qpc.hal.davecutting.uk";
 		return doGet(url+"/?x="+x+"&y="+y);	
 	}
 
 	@GetMapping(value = "/modulo")
 	public String modulo(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
  
-        String url="modulo.40277434.qpc.hal.davecutting.uk";
+        String url="http://modulo.40277434.qpc.hal.davecutting.uk";
 		return doGet(url+"/?x="+x+"&y="+y);	
 	}
 	
@@ -102,6 +102,7 @@ public class DemoController {
 		String result = null;
 		try {
 			URL url = new URL(httpurl);
+			System.out.println(httpurl);
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 			connection.setConnectTimeout(15000);
