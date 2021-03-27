@@ -89,7 +89,7 @@ public class DemoController {
 	
 	@GetMapping(value = "/list")
 	public JSONObject list() {
-
+		String url="";
 		JSONObject jsonObject = JSON.parseObject(getList(url+"/list"));
         return jsonObject;
 
