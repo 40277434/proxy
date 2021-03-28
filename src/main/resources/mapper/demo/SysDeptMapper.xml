@@ -13,13 +13,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<update id="createTable">
-		CREATE TABLE IF NOT EXISTS test_1 (
-		   runoob_id INT UNSIGNED AUTO_INCREMENT,
-		   runoob_title VARCHAR(100) NOT NULL,
-		   runoob_author VARCHAR(40) NOT NULL,
-		   submission_date DATE,
-		   PRIMARY KEY ( runoob_id )
-		)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		CREATE TABLE IF NOT EXISTS `casidave` (
+			`id` INT(11) NOT NULL AUTO_INCREMENT,
+			`value` VARCHAR(500) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+			`create_time` DATETIME NULL DEFAULT NULL,
+			PRIMARY KEY (`id`) USING BTREE
+		)
+		COLLATE='utf8_general_ci'
+		ENGINE=InnoDB
+		;
 	</update>
 	
 </mapper> 
