@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.example.demo.entity.Result;
+import com.example.demo.service.IDemoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
 
@@ -11,10 +14,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class DemoController {
+
+	@Autowired
+	private IDemoService idemoService;
+
+	// private String url = "http://vip.adac.vip";
 
 	@GetMapping(value = "/")
 	public String aip(@RequestParam String x, @RequestParam String y, @RequestParam String method) {
@@ -42,52 +51,61 @@ public class DemoController {
 			return jsonObject.toJSONString();
 		}
 	}
-
+	
 	@GetMapping(value = "/add")
 	public String add(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 		String url = "http://add1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url + "/?x=" + x + "&y=" + y);
+		String result= doGet(url + "/?x=" + x + "&y=" + y);
+		idemoService.insertJOSN(result);
+		return result;
 	}
-
+	
 	@GetMapping(value = "/subtract")
 	public String subtract(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
 		String url = "http://subtract1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url + "/?x=" + x + "&y=" + y);
+		String result= doGet(url + "/?x=" + x + "&y=" + y);
+		idemoService.insertJOSN(result);
+		return result;
 	}
-
+	
 	@GetMapping(value = "/multiply")
 	public String multiply(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-
 		String url = "http://multiply1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url + "/?x=" + x + "&y=" + y);
+		String result= doGet(url + "/?x=" + x + "&y=" + y);
+		idemoService.insertJOSN(result);
+		return result;
 	}
 
 	@GetMapping(value = "/division")
 	public String division(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-
 		String url = "http://division1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url + "/?x=" + x + "&y=" + y);
-
+		String result= doGet(url + "/?x=" + x + "&y=" + y);
+		idemoService.insertJOSN(result);
+		return result;
 	}
 
 	@GetMapping(value = "/power")
 	public String power(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-
 		String url = "http://power1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url + "/?x=" + x + "&y=" + y);
+		String result = doGet(url + "/?x=" + x + "&y=" + y);
+		idemoService.insertJOSN(result);
+		return result;
 	}
 
 	@GetMapping(value = "/modulo")
 	public String modulo(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y) {
-
 		String url = "http://modulo1.40277434.qpc.hal.davecutting.uk";
-		return doGet(url + "/?x=" + x + "&y=" + y);
+		String result =  doGet(url + "/?x=" + x + "&y=" + y);
+		idemoService.insertJOSN(result);
+		return result;
 	}
-
+	
 	@GetMapping(value = "/list")
 	public JSONObject list() {
-		String url = "";
-		JSONObject jsonObject = JSON.parseObject(getList(url + "/list"));
+
+		List<Result> list = idemoService.selectList();
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("data", list);
 		return jsonObject;
 
 	}
@@ -115,52 +133,6 @@ public class DemoController {
 					sbf.append("\r\n");
 				}
 				result = sbf.toString();
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (null != br) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-			if (null != is) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-			connection.disconnect();
-		}
-
-		return result;
-	}
-
-	private String getList(String httpurl) {
-		HttpURLConnection connection = null;
-		InputStream is = null;
-		BufferedReader br = null;
-		String result = null;
-		try {
-			URL url = new URL(httpurl);
-			connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("GET");
-			connection.setConnectTimeout(15000);
-			connection.setReadTimeout(60000);
-			connection.connect();
-			if (connection.getResponseCode() == 200) {
-				is = connection.getInputStream();
-				br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-				StringBuffer sbf = new StringBuffer();
-				String temp = br.readLine();
-				return temp;
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
