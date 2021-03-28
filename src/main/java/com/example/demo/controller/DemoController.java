@@ -110,6 +110,11 @@ public class DemoController {
 
 	}
 
+	@GetMapping(value = "/createTable")
+	public void createTable (){
+		idemoService.createTable();
+	}
+
 	private String doGet(String httpurl) {
 		HttpURLConnection connection = null;
 		InputStream is = null;

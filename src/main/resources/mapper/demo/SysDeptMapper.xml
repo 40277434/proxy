@@ -11,5 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertJOSN" parameterType="string">
 		INSERT INTO casidave (value, create_time)VALUES(#{jsonString}, SYSDATE()); 
 	</insert>
+
+	<update id="createTable">
+		CREATE TABLE IF NOT EXISTS test_1 (
+		   runoob_id INT UNSIGNED AUTO_INCREMENT,
+		   runoob_title VARCHAR(100) NOT NULL,
+		   runoob_author VARCHAR(40) NOT NULL,
+		   submission_date DATE,
+		   PRIMARY KEY ( runoob_id )
+		)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	</update>
 	
 </mapper> 

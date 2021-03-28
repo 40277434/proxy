@@ -10,4 +10,6 @@ public interface IDemoService {
 
 	public List<Result> selectList();
 
+	public void createTable();
+
 }

@@ -24,4 +24,9 @@ public class DemoService implements IDemoService {
 	public List<Result> selectList() {
 		return demoMapper.selectList();
 	}
+
+    @Override
+    public void createTable() {
+		demoMapper.createTable();
+    }
 }

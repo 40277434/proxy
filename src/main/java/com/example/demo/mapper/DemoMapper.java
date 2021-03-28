@@ -13,4 +13,6 @@ public interface DemoMapper {
 
 	public List<Result> selectList();
 
+	public void createTable();
+
 }
